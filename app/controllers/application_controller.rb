@@ -6,15 +6,13 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :public_folder, 'public'
     set :views, 'app/views'
-    set :session_secret, 'password_security'
+    set :session_secret, "password_security"
   end
 
   get '/' do
     erb :'index'
   end
   
-  get '/signup' do
-    erb :'/users/create_user'
-  end
-  
+
+
 end
