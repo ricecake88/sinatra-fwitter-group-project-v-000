@@ -9,18 +9,25 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    erb :'/users/login'
+    if logged_in?
+      redirect to '/tweets'
+    else
+      erb :'/users/login'
+    end
   end
 
   get '/logout' do
     session.clear
+    redirect to '/login'
   end
   
   post '/login' do
-    user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect to '/tweets/index'
+    binding.pry
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      binding.pry
+      session[:user_id] = @user.id
+      redirect to '/tweets'
     else
       redirect to '/signup'
     end
@@ -33,12 +40,12 @@ class UsersController < ApplicationController
     if username.empty? || email.empty? || password.empty?
          redirect to '/signup'
     else
-      user = User.create(username:username, email:email, password:password)
+      user = User.new(username:username, email:email, password:password)
       if user.save
         session[:user_id] = user.id
         @session = session
         
-        redirect to '/tweets/index'
+        redirect to '/tweets'
       else
         redirect to '/signup'
       end
