@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   get '/login' do
     if logged_in?
-      session[:user_id]
       redirect to '/tweets'
     else
       erb :'/users/login'
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    session.clear
     redirect to '/login'
   end
   
@@ -50,15 +48,11 @@ class UsersController < ApplicationController
       end
     end
   end
-  
-  helpers do
-    def logged_in?
-      !!session[:user_id]
-    end
 
-    def current_user
-      User.find(session[:user_id])
-    end
+
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    binding.pry
+    erb :'/tweets/show_tweet'
   end
-  
 end
