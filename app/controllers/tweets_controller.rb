@@ -46,6 +46,9 @@ class TweetsController < ApplicationController
     end
   end
   
+  get '/tweets/:id/delete' do
+  end
+  
   patch '/tweets/:id/edit' do
     if logged_in?
       if params[:content] != ""
