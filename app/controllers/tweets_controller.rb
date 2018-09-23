@@ -7,6 +7,11 @@ class TweetsController < ApplicationController
     end
   end
   
+  get '/tweets/:id' do
+    @tweet = Tweet.find(id:params[:id])
+    erb :'/tweets/show_tweet.erb'
+  end
+  
   get '/tweets/new' do
     if logged_in?
       erb :'/tweets/create_tweet'
@@ -27,8 +32,5 @@ class TweetsController < ApplicationController
     end
   end
   
-  get '/tweets/:id' do
-    @tweet = Tweet.find(id:params[:id])
-    erb :'/tweets/show_tweet.erb'
-  end
+
 end
