@@ -1,5 +1,5 @@
 Tweet:<br/>
-<form method="post" action="/tweets/de">
+<form method="post" action="/tweets/<%= @tweet.id %>/delete">
 <%= @tweet.content %><br/>
 <input type="submit" value="Delete Tweet"><br/>
 </form>
