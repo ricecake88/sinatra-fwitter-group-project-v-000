@@ -1,4 +1,5 @@
 Tweet:<br/>
+<% binding.pry %>
 <form method="post" action="/tweets/<%= @tweet.id %>/edit">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="text" value="<%= @tweet.content %>" name="content"><br/>
