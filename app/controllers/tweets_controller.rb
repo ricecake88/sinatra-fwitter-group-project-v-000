@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
   post '/create' do
     content = params[:content]
     if logged_in?
-      if content = ""
+      if content != ""
         tweet = Tweet.new(user_id:session[:user_id], content:params[:content])
         current_user.tweets << tweet
       end
