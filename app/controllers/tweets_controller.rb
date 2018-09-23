@@ -52,7 +52,7 @@ class TweetsController < ApplicationController
       @tweet = Tweet.find_by(params[:id])
       @tweet.content = params[:content]
       @tweet.save
-      erb :"/tweets/#{@tweet.id}"
+      redirect to "/tweets/#{@tweet.id}"
     else
       redirect to '/login'
     end
