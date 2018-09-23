@@ -16,9 +16,12 @@ class TweetsController < ApplicationController
   end
   
   post '/create' do
+    content = params[:content]
     if logged_in?
-      tweet = Tweet.new(user_id:session[:user_id], content:params[:content])
-      current_user.tweets << tweet
+      if content = ""
+        tweet = Tweet.new(user_id:session[:user_id], content:params[:content])
+        current_user.tweets << tweet
+      end
     else
       redirect to '/login'
     end
