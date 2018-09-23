@@ -21,6 +21,5 @@ class TweetsController < ApplicationController
     else
       redirect to '/login'
     end
-    binding.pry
   end
 end
