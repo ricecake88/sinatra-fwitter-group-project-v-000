@@ -68,11 +68,10 @@ class TweetsController < ApplicationController
     end
   end
   
-  delete '/posts/:id/delete' do
+  delete '/tweets/:id/delete' do
     if logged_in?
       @tweet = Tweet.find(params[:id])
       @tweet.delete
-      binding.pry
       redirect to '/tweets'
     else
       redirect to '/login'
