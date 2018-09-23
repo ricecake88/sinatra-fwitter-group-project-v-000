@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
     end
   end
   
-  get '/create' do
+  post '/create' do
     binding.pry
   end
 end
