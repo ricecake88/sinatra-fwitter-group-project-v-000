@@ -72,7 +72,7 @@ class TweetsController < ApplicationController
     if logged_in?
       @tweet = Tweet.find(params[:id])
       binding.pry
-      if current_user == @tweet.user_id
+      if current_user.id == @tweet.user_id
         @tweet.delete
       end
       redirect to '/tweets'
