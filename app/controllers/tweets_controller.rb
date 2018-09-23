@@ -16,7 +16,7 @@ class TweetsController < ApplicationController
   end
   
   post '/create' do
-    Tweet.new()
+    tweet = Tweet.new(user_id:session[:user_id], content:params[:content])
     binding.pry
   end
 end
