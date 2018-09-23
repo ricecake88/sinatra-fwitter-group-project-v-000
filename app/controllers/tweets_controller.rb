@@ -16,7 +16,6 @@ class TweetsController < ApplicationController
   end
   
   post '/tweets/new' do
-    binding.pry
     content = params[:content]
     if logged_in?
       if content != ""
