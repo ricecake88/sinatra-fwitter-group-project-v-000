@@ -14,4 +14,8 @@ class TweetsController < ApplicationController
       redirect to '/login'
     end
   end
+  
+  get '/create' do
+    binding.pry
+  end
 end
