@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
     end
   end
   
-  post '/create' do
+  post '/tweets/new' do
     content = params[:content]
     if logged_in?
       if content != ""
