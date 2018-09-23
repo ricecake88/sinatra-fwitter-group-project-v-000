@@ -22,6 +22,7 @@ class TweetsController < ApplicationController
       if content != ""
         tweet = Tweet.new(user_id:session[:user_id], content:params[:content])
         current_user.tweets << tweet
+        erb :'/tweets'
       end
     else
       redirect to '/login'
